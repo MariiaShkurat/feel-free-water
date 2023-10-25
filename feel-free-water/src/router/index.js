@@ -1,24 +1,25 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter as _createRouter, createWebHistory, createMemoryHistory } from 'vue-router'
 
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: () => import('@/views/Home.vue')
-    },
-    {
-      path: '/coolers',
-      name: 'coolers',
-      component: () => import('@/views/Coolers.vue')
-    },
-    {
-      path: '/goods',
-      name: 'goods',
-      component: () => import('@/views/Goods.vue')
-    }
-  ]
-})
+const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: () => import('@/views/Home.vue')
+  },
+  {
+    path: '/coolers',
+    name: 'coolers',
+    component: () => import('@/views/Coolers.vue')
+  },
+  {
+    path: '/goods',
+    name: 'goods',
+    component: () => import('@/views/Goods.vue')
+  }
+]
 
-export default router
+export const createRouter = () =>
+  _createRouter({
+    history: import.meta.env.SSR ? createMemoryHistory('/') : createWebHistory('/'),
+    routes
+  })

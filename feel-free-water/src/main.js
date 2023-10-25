@@ -1,16 +1,16 @@
-import './assets/main.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap-icons/font/bootstrap-icons.css'
-import 'bootstrap'
 import { createVuetify } from 'vuetify/dist/vuetify'
-import 'vuetify/dist/vuetify.css'
-import { createApp } from 'vue'
+
 import App from './App.vue'
-import router from './router'
 
-const vuetify = createVuetify()
-const app = createApp(App)
+import { createRouter } from './router'
+import { createSSRApp } from 'vue'
 
-app.use(router)
-app.use(vuetify)
-app.mount('#app')
+export function createApp() {
+  const app = createSSRApp(App)
+  const router = createRouter()
+  app.use(router)
+  const vuetify = createVuetify()
+  app.use(vuetify)
+
+  return { app, router, vuetify }
+}

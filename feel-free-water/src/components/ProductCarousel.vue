@@ -26,8 +26,6 @@
 </template>
 <script>
 import ProductCard from '@/components/ProductCard.vue'
-import { VueperSlides, VueperSlide } from 'vueperslides'
-import 'vueperslides/dist/vueperslides.css'
 
 import carousel_1 from '../assets/pngs/carousel/1.jpeg'
 import carousel_2 from '../assets/pngs/carousel/2.jpg'
@@ -49,8 +47,6 @@ export default {
   name: 'Carousel',
   name: 'Autoplay',
   components: {
-    VueperSlides,
-    VueperSlide,
     ProductCard
   },
   data() {
